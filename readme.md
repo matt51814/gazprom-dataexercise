@@ -16,7 +16,7 @@ Install the requirements with the command above and run the code with :
 ```
 $ python main.py
 ```
-If the code has ran correctly you should be met with an output saying "SUCCESS".
+If the code has ran correctly you should be met with an output saying "SUCCESS" and a database named 'SMRTdata.db' should be saved into the directory.
 
 This code will go through each file in the folder 'sample_data' checking the validity of the file. If it is suitable it will be added to a Pandas DataFrame from which we use SQLite statements to export the files to a database 'SMRTdata.db' containing three tables: 'file_table', 'meter_table' and 'reading_table'. If the file is considered to be unsuitable due to incorrect header or footer format the file shall be moved from 'sample_data' to 'invalid_data'.
 
