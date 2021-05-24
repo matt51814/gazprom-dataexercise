@@ -17,25 +17,28 @@ path = './sample_data/'
 # path of directory to move invalid data
 invalid_path = './invalid_data/'
 
-
+# get database file
 sqlite_file = "SMRTdata.db"
 
+# establish connection to database
 conn, c = functions.connect(sqlite_file)
 
+
+# if file_table doesn't exist, create it
 c.execute("""CREATE TABLE IF NOT EXISTS file_table(
     FILE_ID TEXT PRIMARY KEY NOT NULL,
     DATE_RECEIVED TEXT NOT NULL,
     TIME_RECEIVED TEXT NOT NULL
 )""")
 
-
+# if meter_table doesn't exist, create it
 c.execute("""CREATE TABLE IF NOT EXISTS meter_table(
     METER_ID TEXT PRIMARY KEY NOT NULL,
     LAST_UPDATED_DATE TEXT NOT NULL,
     LAST_UPDATED_TIME TEXT NOT NULL
 )""")
 
-
+# if (meter) reading table doesn't exist, create it
 c.execute("""CREATE TABLE IF NOT EXISTS reading_table(
     READING_ID INTEGER PRIMARY KEY,
     FILE_ID TEXT NOT NULL,
@@ -71,6 +74,8 @@ for file in files:
 
 
 
-
+# commit and close connection
 functions.close(conn)
+
+# print SUCCESS
 print("SUCCESS")
